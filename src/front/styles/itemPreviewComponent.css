@@ -1,0 +1,9 @@
+.card-custom-border {
+  padding: auto;
+  margin: 10px;
+  transition: transform 0.2s ease-in-out; /* Smooth transition for hover effect */
+}
+
+.card-custom-border:hover {
+  transform: scale(1.03); /* Slightly enlarge on hover */
+}
