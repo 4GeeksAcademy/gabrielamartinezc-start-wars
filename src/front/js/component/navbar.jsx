@@ -1,16 +1,30 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import startWarsLogo from "../../img/starwars-logo.png";
-import { Context } from "../store/appContext"; 
+import { Context } from "../store/appContext";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export const Navbar = () => {
-  const { store } = useContext(Context); 
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); 
+  const { store } = useContext(Context);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isLogged, setIsLogged] = useState(false);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+
+  const logOut = () => {
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("email");
+    window.location.href = "/login";
+  };
+
+  useEffect(() => {
+    const token = sessionStorage.getItem("token");
+    if (token) {
+      setIsLogged(true);
+    }
+  }, []);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
@@ -65,7 +79,7 @@ export const Navbar = () => {
                   <Link
                     key={index}
                     className="dropdown-item"
-                    to={`/${item.itemType}/${item.name}`} 
+                    to={`/${item.itemType}/${item.name}`}
                   >
                     {item.name}
                   </Link>
@@ -75,6 +89,21 @@ export const Navbar = () => {
               )}
             </div>
           </div>
+
+          <Link to="/contact/list" className="btn btn-primary">
+            {" "}
+            Contacts{" "}
+          </Link>
+
+          {isLogged ? (
+            <button className="btn btn-danger" onClick={logOut}>
+              Log out
+            </button>
+          ) : (
+            <Link to="/login" className="btn btn-primary">
+              Log in
+            </Link>
+          )}
         </div>
       </div>
     </nav>

@@ -13,6 +13,11 @@ import "../styles/index.css";
 import PeopleDetailView from "./pages/peopleDetailView.jsx";
 import PlanetDetailView from "./pages/planetsDetailView.jsx";
 import VehicleDetailView from "./pages/vehiclesDetailView.jsx";
+import AddContact from "./pages/addContact.jsx";
+import ContactList from "./pages/contactList.jsx";
+import SignUp from "./pages/signUp.jsx";
+import Login from "./pages/login.jsx";
+import PrivatePage from "./pages/privatePage.jsx";
 
 //create your first component
 const Layout = () => {
@@ -34,9 +39,18 @@ const Layout = () => {
           <Navbar />
           <Routes>
             <Route element={<Home />} path="/" />
+            <Route element={<SignUp />} path="/signup" />
+            <Route element={<Login />} path="/login" />
+            <Route element={<PrivatePage />} path="/private" />
             <Route element={<PeopleDetailView />} path="/people/:peopleName" />
             <Route element={<PlanetDetailView />} path="/planets/:planetName" />
-            <Route element={<VehicleDetailView />} path="/vehicles/:vehicleName" />
+            <Route
+              element={<VehicleDetailView />}
+              path="/vehicles/:vehicleName"
+            />
+            <Route element={<AddContact />} path="/contact" />
+            <Route element={<ContactList />} path="/contact/list" />
+
             <Route element={<h1>Not found!</h1>} />
           </Routes>
           <Footer />

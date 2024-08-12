@@ -18,6 +18,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       planets: [], // Add an array to store the planets data
       vehicles: [], // Add an array to store the vehicles data
       favorites: [], // Add an array to store the favourites data
+      contacts: [],
     },
     actions: {
       exampleFunction: () => {
@@ -291,11 +292,10 @@ const getState = ({ getStore, getActions, setStore }) => {
               break;
             }
 
-           
             if (data.next) {
               page += 1;
             } else {
-              break; 
+              break;
             }
           }
 
@@ -336,6 +336,121 @@ const getState = ({ getStore, getActions, setStore }) => {
           setStore({ vehicles: allVehicles }); // Save the limited data to the store
         } catch (error) {
           console.error("Error fetching vehicles data", error);
+        }
+      },
+
+      // Create Agenda POST https://playground.4geeks.com/contact/agendas/myagenda
+      // createAgenda: async () => {
+      //   const slug = "myagenda";
+
+      //   const response = await fetch(
+      //     "https://playground.4geeks.com" + "/contact/agendas/" + slug,
+      //     {
+      //       method: "POST",
+      //       headers: {
+      //         "Content-Type": "application/json",
+      //       },
+      //     }
+      //   );
+
+      //   if (response.ok) {
+      //     console.log("Agenda created successfully");
+      //   } else {
+      //     console.error("Failed to create agenda");
+      //   }
+      // },
+
+      getAgenda: async () => {
+        const slug = "myagenda";
+
+        const response = await fetch(
+          "https://playground.4geeks.com" + "/contact/agendas/" + slug,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          setStore({ contacts: data.contacts });
+        } else {
+          console.error("Failed to get agenda");
+        }
+      },
+
+      addContact: async (contact) => {
+        const slug = "myagenda";
+
+        const response = await fetch(
+          "https://playground.4geeks.com" + "/contact/" + slug,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(contact),
+          }
+        );
+
+        if (response.ok) {
+          console.log("Contact added successfully");
+          getActions().getAgenda();
+        } else {
+          console.error("Failed to add contact");
+        }
+      },
+
+      removeContact: async (contact) => {
+        const slug = "myagenda";
+
+        const response = await fetch(
+          "https://playground.4geeks.com" +
+            "/contact/agendas/" +
+            slug +
+            "/contacts/" +
+            contact.id,
+          {
+            method: "DELETE",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+
+        if (response.ok) {
+          console.log("Contact removed successfully");
+          getActions().getAgenda();
+        } else {
+          console.error("Failed to remove contact");
+        }
+      },
+
+      updateContact: async (contact) => {
+        const slug = "myagenda";
+
+        const response = await fetch(
+          "https://playground.4geeks.com" +
+            "/contact/agendas/" +
+            slug +
+            "/contacts/" +
+            contact.id,
+          {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(contact),
+          }
+        );
+
+        if (response.ok) {
+          console.log("Contact updated successfully");
+          getActions().getAgenda();
+        } else {
+          console.error("Failed to update contact");
         }
       },
     },

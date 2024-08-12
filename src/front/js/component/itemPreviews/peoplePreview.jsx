@@ -8,7 +8,6 @@ const PeoplePreview = () => {
   const resource = store.people; // Array of people objects
 
   
-
   return (
     <>
       {

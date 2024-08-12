@@ -1,7 +1,7 @@
 import { Context } from "../store/appContext";
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+
 
 const VehiclesDetailView = () => {
   const { store } = useContext(Context);
