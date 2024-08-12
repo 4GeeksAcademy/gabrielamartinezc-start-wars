@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import PlanetItem from "../items/planetItem";
+import PlanetItem from "../items/planetItem.jsx";
 import "../../../styles/itemPreviewComponent.css";
 import { Context } from "../../store/appContext";
 

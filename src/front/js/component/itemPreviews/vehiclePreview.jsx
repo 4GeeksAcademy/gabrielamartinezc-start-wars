@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import VehicleItem from "../items/vehicleItem";
+import VehicleItem from "../items/vehicleItem.jsx";
 import { Context } from "../../store/appContext";
 
 const VehiclePreview = () => {

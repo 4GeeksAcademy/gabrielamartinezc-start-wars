@@ -2,7 +2,7 @@ import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import "../../../styles/itemPreviewComponent.css";
-import HeartIcon from "../heartIcon";
+import HeartIcon from "../heartIcon.jsx";
 import { useNavigate } from "react-router-dom";
 
 const VehicleItem = ({ title, model, passengers, vehicleClass, image }) => {

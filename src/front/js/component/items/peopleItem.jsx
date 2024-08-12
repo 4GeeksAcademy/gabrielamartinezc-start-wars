@@ -1,25 +1,20 @@
-import React from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import "../../../styles/itemPreviewComponent.css";
-import HeartIcon from "../heartIcon";
+import HeartIcon from "../heartIcon.jsx";
 import { useNavigate } from "react-router-dom";
+import React from "react";
 
-const PlanetItem = ({ title, climate, population, terrain, image }) => {
+const PeopleItem = ({ title, hairColor, eyesColor, gender, imgSource }) => {
   const navigate = useNavigate();
+
   const handleClick = () => {
-    navigate(`/planets/${title}`);
+    navigate(`/people/${title}`);
   };
+
   return (
-    <Card
-      className="card-custom-border"
-      style={{ width: "18rem", maxWidth: "18rem", maxHeight: "480px" }}
-    >
-      <Card.Img
-        variant="top"
-        style={{ maxWidth: "286px", maxHeight: "286px" }}
-        src={image}
-      />
+    <Card className="card-custom-border" style={{ width: "18rem" }}>
+      <Card.Img variant="top" src={imgSource} />
       <Card.Body>
         <Card.Title>{title}</Card.Title>
         <Card.Text
@@ -29,9 +24,9 @@ const PlanetItem = ({ title, climate, population, terrain, image }) => {
             whiteSpace: "nowrap",
           }}
         >
-          Climate: {climate} <br />
-          Population: {population} <br />
-          Terrain: {terrain}
+          Gender:{gender} <br />
+          Hair Color: {hairColor} <br />
+          Eyes Color: {eyesColor}
         </Card.Text>
         <div
           style={{
@@ -42,11 +37,11 @@ const PlanetItem = ({ title, climate, population, terrain, image }) => {
           <Button onClick={handleClick} variant="secondary">
             Saber más!
           </Button>
-          <HeartIcon itemType={"planets"} name={title} />
+          <HeartIcon itemType={"people"} name={title} />
         </div>
       </Card.Body>
     </Card>
   );
 };
 
-export default PlanetItem;
+export default PeopleItem;

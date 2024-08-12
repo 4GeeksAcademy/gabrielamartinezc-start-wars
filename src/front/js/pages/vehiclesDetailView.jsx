@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const VehiclesDetailView = () => {
   const { store } = useContext(Context);
-  const { vehicleName } = useParams();
+  const { vehicleName } = useParams(); // Sand Crawler
 
   const [item, setItem] = useState(null);
   const [movies, setMovies] = useState(null);

@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
-import PeopleItem from "../items/peopleItem";
+import PeopleItem from "../items/peopleItem.jsx";
 import { Context } from "../../store/appContext";
 
 const PeoplePreview = () => {
   const { store, actions } = useContext(Context);
 
-  const resource = store.people;
+  const resource = store.people; // Array of people objects
+
+  
 
   return (
     <>

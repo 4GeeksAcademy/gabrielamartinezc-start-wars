@@ -2,9 +2,9 @@ import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 
-import PeoplePreview from "../component/itemPreviews/peoplePreview";
-import PlanetPreview from "../component/itemPreviews/planetPreview";
-import VehiclePreview from "../component/itemPreviews/vehiclePreview";
+import PeoplePreview from "../component/itemPreviews/peoplePreview.jsx";
+import PlanetPreview from "../component/itemPreviews/planetPreview.jsx";
+import VehiclePreview from "../component/itemPreviews/vehiclePreview.jsx";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);

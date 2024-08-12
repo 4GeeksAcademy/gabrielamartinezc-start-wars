@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 
 const PeopleDetailView = () => {
   const { store } = useContext(Context);
-  const { peopleName } = useParams();
+  const { peopleName } = useParams(); // Luke Skywalker
 
   const [item, setItem] = useState(null);
   const [movies, setMovies] = useState(null);
@@ -64,9 +64,9 @@ const PeopleDetailView = () => {
       const fetchVehicles = async () => {
         const vehicleNames = [];
         for (let i = 0; i < person.vehicles.length; i++) {
-          const response = await fetch(person.vehicles[i]);
+          const response = await fetch(person.vehicles[i]); // https://swapi.dev/api/vehicles/14/
           const data = await response.json();
-          vehicleNames.push(data.name);
+          vehicleNames.push(data.name); // Snowspeeder
         }
         if (isMounted) setVehicles(vehicleNames);
       };
