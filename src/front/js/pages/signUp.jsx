@@ -12,7 +12,7 @@ const SignUp = () => {
     event.preventDefault();
 
     try {
-      const response = await axios.post("http://127.0.0.1:3001/api/signup", {
+      const response = await axios.post("https://turbo-capybara-jjrjrw55vjxp25gp5-3001.app.github.dev/api/signup", {
         email,
         password,
       });
